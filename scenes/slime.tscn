@@ -1,0 +1,146 @@
+[gd_scene format=3 uid="uid://cidlj06ne568v"]
+
+[ext_resource type="Script" uid="uid://c63nufhyrx8tf" path="res://scripts/slime.gd" id="1_p0gd4"]
+[ext_resource type="Texture2D" uid="uid://bk5r8m12csyx7" path="res://assets/brackeys/slime_green.png" id="1_u5x6x"]
+[ext_resource type="PackedScene" uid="uid://c4dcyu0ur6r8w" path="res://scenes/explosion.tscn" id="2_t0hr5"]
+[ext_resource type="Script" uid="uid://bdwisemu6jmxg" path="res://scripts/slime_animation.gd" id="3_e48o1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t3x3c"]
+atlas = ExtResource("1_u5x6x")
+region = Rect2(0, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vlqi3"]
+atlas = ExtResource("1_u5x6x")
+region = Rect2(24, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_okxt6"]
+atlas = ExtResource("1_u5x6x")
+region = Rect2(48, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h2dsu"]
+atlas = ExtResource("1_u5x6x")
+region = Rect2(72, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2xoau"]
+atlas = ExtResource("1_u5x6x")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qbomg"]
+atlas = ExtResource("1_u5x6x")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_homqc"]
+atlas = ExtResource("1_u5x6x")
+region = Rect2(48, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rttwh"]
+atlas = ExtResource("1_u5x6x")
+region = Rect2(72, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_axe3n"]
+atlas = ExtResource("1_u5x6x")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mhxpa"]
+atlas = ExtResource("1_u5x6x")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7kqtg"]
+atlas = ExtResource("1_u5x6x")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nehnh"]
+atlas = ExtResource("1_u5x6x")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rs2xv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t3x3c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vlqi3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_okxt6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h2dsu")
+}],
+"loop": false,
+"name": &"damaged",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2xoau")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qbomg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_homqc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rttwh")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_axe3n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mhxpa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7kqtg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nehnh")
+}],
+"loop": false,
+"name": &"spawn",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m724r"]
+size = Vector2(14, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_82ki6"]
+size = Vector2(493.5, 282.125)
+
+[node name="Slime" type="CharacterBody2D" unique_id=234995701]
+z_index = 2
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_p0gd4")
+SPEED = 140.0
+explosion = ExtResource("2_t0hr5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1494273829]
+sprite_frames = SubResource("SpriteFrames_rs2xv")
+animation = &"idle"
+autoplay = "spawn"
+script = ExtResource("3_e48o1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1479393622]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_m724r")
+
+[node name="DetectRadius" type="Area2D" parent="." unique_id=1306892616]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectRadius" unique_id=1577208558]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_82ki6")
+
+[node name="BombSound" type="AudioStreamPlayer2D" parent="." unique_id=1272735549]
+max_distance = 1000.0
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_slime_animation_finished"]
+[connection signal="body_entered" from="DetectRadius" to="." method="_on_detect_radius_body_entered"]
+[connection signal="body_exited" from="DetectRadius" to="." method="_on_detect_radius_body_exited"]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dotk7yrehr6lx"
+path="res://.godot/imported/lobby game paling luar.mp3-f557ffc0d695b4c9c0d5be20f478470a.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/lobby game paling luar.mp3"
+dest_files=["res://.godot/imported/lobby game paling luar.mp3-f557ffc0d695b4c9c0d5be20f478470a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

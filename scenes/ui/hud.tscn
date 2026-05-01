@@ -1,0 +1,126 @@
+[gd_scene format=3 uid="uid://dy2esm4akhav1"]
+
+[ext_resource type="Script" uid="uid://bjv74mah1672o" path="res://scripts/ui/hud.gd" id="1_h57g0"]
+[ext_resource type="Texture2D" uid="uid://wm876r17412g" path="res://assets/kenney_fantasy-ui-borders/PNG/Double/Panel/panel-000.png" id="2_hqnrr"]
+
+[node name="HUD" type="CanvasLayer" unique_id=871098079]
+script = ExtResource("1_h57g0")
+
+[node name="HudUpdateTimer" type="Timer" parent="." unique_id=842502410]
+wait_time = 0.1
+autostart = true
+
+[node name="HUDContainer" type="Control" parent="." unique_id=38284128]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TimePanel" type="NinePatchRect" parent="HUDContainer" unique_id=202925217]
+unique_name_in_owner = true
+self_modulate = Color(0.97, 0.8, 0.3, 1)
+custom_minimum_size = Vector2(300, 90)
+layout_mode = 0
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 380.0
+offset_bottom = 130.0
+pivot_offset = Vector2(150, 45)
+texture = ExtResource("2_hqnrr")
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+
+[node name="TimeElapsed" type="Label" parent="HUDContainer/TimePanel" unique_id=283550551]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.3)
+theme_override_font_sizes/font_size = 56
+text = "Time: 00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EnemyPanel" type="NinePatchRect" parent="HUDContainer" unique_id=1027520982]
+unique_name_in_owner = true
+self_modulate = Color(0.97, 0.8, 0.3, 1)
+custom_minimum_size = Vector2(300, 90)
+layout_mode = 0
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -380.0
+offset_top = 30.0
+offset_right = -30.0
+offset_bottom = 130.0
+pivot_offset = Vector2(150, 45)
+texture = ExtResource("2_hqnrr")
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+
+[node name="EnemiesRemaining" type="Label" parent="HUDContainer/EnemyPanel" unique_id=55881166]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.3)
+theme_override_font_sizes/font_size = 56
+text = "Enemies: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CooldownContainer" type="HBoxContainer" parent="HUDContainer" unique_id=1283590148]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -400.0
+offset_top = -100.0
+offset_right = 400.0
+offset_bottom = -30.0
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="Dash" type="Label" parent="HUDContainer/CooldownContainer" unique_id=1174301216]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.97, 0.8, 0.3, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 48
+text = "DASH"
+
+[node name="DashBar" type="ProgressBar" parent="HUDContainer/CooldownContainer/Dash" unique_id=1007697138]
+custom_minimum_size = Vector2(110, 8)
+layout_mode = 0
+show_percentage = false
+
+[node name="Shotgun" type="Label" parent="HUDContainer/CooldownContainer" unique_id=1192485093]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.97, 0.8, 0.3, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 48
+text = "SHOTGUN"
+
+[node name="ShotgunBar" type="ProgressBar" parent="HUDContainer/CooldownContainer/Shotgun" unique_id=1342144948]
+custom_minimum_size = Vector2(220, 8)
+layout_mode = 0
+show_percentage = false
+
+[connection signal="timeout" from="HudUpdateTimer" to="." method="_on_hud_update_timer_timeout"]

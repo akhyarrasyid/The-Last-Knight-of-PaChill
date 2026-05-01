@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://ojg0qw01vfjx"]
+
+[ext_resource type="Texture2D" uid="uid://bke51fbx1daf7" path="res://assets/TinySword/Warrior_Blue.png" id="1_spns6"]
+[ext_resource type="Script" uid="uid://c7xyhf1ehqfkk" path="res://scripts/dash_ghost_effect.gd" id="2_wcy3e"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_13bnd"]
+atlas = ExtResource("1_spns6")
+region = Rect2(960, 384, 192, 192)
+
+[node name="DashGhostEffect" type="Sprite2D"]
+modulate = Color(1, 1, 1, 0.411765)
+show_behind_parent = true
+z_index = 1
+position = Vector2(598.5, 315.5)
+scale = Vector2(1.00521, 0.984375)
+texture = SubResource("AtlasTexture_13bnd")
+script = ExtResource("2_wcy3e")

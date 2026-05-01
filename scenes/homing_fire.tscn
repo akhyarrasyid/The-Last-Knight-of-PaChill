@@ -1,0 +1,93 @@
+[gd_scene load_steps=13 format=3 uid="uid://d11xgtdb0wku4"]
+
+[ext_resource type="Script" uid="uid://pgvj5wxjeff3" path="res://scripts/homing_fire.gd" id="1_8r02l"]
+[ext_resource type="Texture2D" uid="uid://b0xfie8h1evcr" path="res://assets/TinySword/Fire.png" id="1_fedni"]
+[ext_resource type="PackedScene" uid="uid://c4dcyu0ur6r8w" path="res://scenes/explosion.tscn" id="2_ifcpa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5fpw6"]
+atlas = ExtResource("1_fedni")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nhduk"]
+atlas = ExtResource("1_fedni")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vlk27"]
+atlas = ExtResource("1_fedni")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_abigl"]
+atlas = ExtResource("1_fedni")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_drno2"]
+atlas = ExtResource("1_fedni")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0o5b4"]
+atlas = ExtResource("1_fedni")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0tvft"]
+atlas = ExtResource("1_fedni")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g8plh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5fpw6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nhduk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vlk27")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_abigl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_drno2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0o5b4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0tvft")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5dw5k"]
+radius = 32.0156
+
+[node name="HomingFire" type="Area2D"]
+z_index = 2
+scale = Vector2(0.4, 0.4)
+collision_layer = 8
+collision_mask = 171
+script = ExtResource("1_8r02l")
+Explosion = ExtResource("2_ifcpa")
+speed = 220
+steer_force = 40.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_g8plh")
+autoplay = "default"
+frame_progress = 0.818145
+
+[node name="Lifetime" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 18)
+shape = SubResource("CircleShape2D_5dw5k")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]

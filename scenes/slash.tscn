@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dw64ibpnrt1bu"]
+
+[ext_resource type="Script" uid="uid://chemjpgrihds6" path="res://scripts/slash.gd" id="1_dk0a3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8w06o"]
+size = Vector2(73, 108)
+
+[node name="SlashHitbox" type="Area2D" unique_id=741039499]
+z_index = 3
+collision_layer = 16
+collision_mask = 5
+script = ExtResource("1_dk0a3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1256106138]
+position = Vector2(60, 1)
+shape = SubResource("RectangleShape2D_8w06o")
+
+[connection signal="body_entered" from="." to="." method="_on_slash_body_entered"]

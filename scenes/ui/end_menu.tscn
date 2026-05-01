@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://ci34hn5wyvjbq"]
+
+[ext_resource type="Script" uid="uid://coaxh2m1jr8oi" path="res://scripts/ui/end_menu.gd" id="1_sfcoi"]
+
+[node name="EndMenu" type="CanvasLayer" unique_id=833694528]
+script = ExtResource("1_sfcoi")
+
+[node name="BackgroundOverlay" type="ColorRect" parent="." unique_id=2087590408]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.05, 0.05, 0.1, 0.5)
+
+[node name="Background" type="ColorRect" parent="." unique_id=1558427253]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.07, 0.07, 0.1, 1)
+
+[node name="MenuContent" type="CenterContainer" parent="Background" unique_id=100057445]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="MenuContentVBox" type="VBoxContainer" parent="Background/MenuContent" unique_id=1064860960]
+layout_mode = 2
+
+[node name="MainLayout" type="VBoxContainer" parent="Background/MenuContent/MenuContentVBox" unique_id=244261681]
+layout_mode = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="Outcome" type="Label" parent="Background/MenuContent/MenuContentVBox/MainLayout" unique_id=292540979]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 64
+text = "You beat the level"
+horizontal_alignment = 1
+
+[node name="StatsContainer" type="VBoxContainer" parent="Background/MenuContent/MenuContentVBox/MainLayout" unique_id=1312437968]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="StatsLabelsVBox" type="VBoxContainer" parent="Background/MenuContent/MenuContentVBox/MainLayout/StatsContainer" unique_id=1420880159]
+layout_mode = 2
+
+[node name="ClearTime" type="Label" parent="Background/MenuContent/MenuContentVBox/MainLayout/StatsContainer/StatsLabelsVBox" unique_id=1590634026]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 36
+text = "Clear Time: 0.00 seconds"
+horizontal_alignment = 1
+
+[node name="BestClearTime" type="Label" parent="Background/MenuContent/MenuContentVBox/MainLayout/StatsContainer/StatsLabelsVBox" unique_id=886493541]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 36
+text = "Best Clear Time: 0.00 seconds"
+horizontal_alignment = 1
+
+[node name="ButtonContainer" type="HBoxContainer" parent="Background/MenuContent/MenuContentVBox/MainLayout" unique_id=2126095545]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="NextLevelButton" type="Button" parent="Background/MenuContent/MenuContentVBox/MainLayout/ButtonContainer" unique_id=1107634484]
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "Next Level"
+
+[node name="RestartButton" type="Button" parent="Background/MenuContent/MenuContentVBox/MainLayout/ButtonContainer" unique_id=297984132]
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "Restart"
+
+[node name="MainMenuButton" type="Button" parent="Background/MenuContent/MenuContentVBox/MainLayout/ButtonContainer" unique_id=1680982168]
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "Main Menu"
+
+[connection signal="pressed" from="Background/MenuContent/MenuContentVBox/MainLayout/ButtonContainer/NextLevelButton" to="." method="_on_next_level_button_pressed"]
+[connection signal="pressed" from="Background/MenuContent/MenuContentVBox/MainLayout/ButtonContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="Background/MenuContent/MenuContentVBox/MainLayout/ButtonContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]

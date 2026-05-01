@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://dh1ahk6c681uf"]
+
+[ext_resource type="Script" uid="uid://c4ca8wypnlywc" path="res://scripts/ui/died_menu.gd" id="1_rts8r"]
+[ext_resource type="Texture2D" uid="uid://b5th2mn3h7ehg" path="res://assets/akhyar/game over.png" id="8_gkeyb"]
+
+[node name="DiedMenu" type="CanvasLayer" unique_id=1469654048]
+script = ExtResource("1_rts8r")
+
+[node name="GameOverImage" type="TextureRect" parent="." unique_id=1954204300]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_gkeyb")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ReadabilityOverlay" type="ColorRect" parent="." unique_id=1159527908]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.05, 0.05, 0.1, 0.4)
+
+[node name="MenuContent" type="VBoxContainer" parent="." unique_id=1215904144]
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="OutcomeLabel" type="Label" parent="MenuContent" unique_id=1911446080]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 72
+text = "YOU DIED"
+vertical_alignment = 1
+
+[node name="BestClearTimeLabel" type="Label" parent="MenuContent" unique_id=539249067]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+vertical_alignment = 1
+
+[node name="ButtonContainer" type="VBoxContainer" parent="MenuContent" unique_id=1359709159]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Buttons" type="VBoxContainer" parent="MenuContent/ButtonContainer" unique_id=1537119612]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="RestartButton" type="Button" parent="MenuContent/ButtonContainer/Buttons" unique_id=346144492]
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "RESTART"
+
+[node name="MainMenuButton" type="Button" parent="MenuContent/ButtonContainer/Buttons" unique_id=1661291696]
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "MAIN MENU"
+
+[connection signal="pressed" from="MenuContent/ButtonContainer/Buttons/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="MenuContent/ButtonContainer/Buttons/MainMenuButton" to="." method="_on_main_menu_button_pressed"]

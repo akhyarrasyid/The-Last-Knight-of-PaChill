@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://cpyginnql37e4"]
+
+[ext_resource type="Script" uid="uid://tme5j2m02wy2" path="res://scripts/shotgun_hitbox.gd" id="1_pk7ge"]
+[ext_resource type="Texture2D" uid="uid://ctw1pamep1mvk" path="res://assets/TinySword/shotgun-bullets.png" id="2_gbr8a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s6f87"]
+atlas = ExtResource("2_gbr8a")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uonsa"]
+atlas = ExtResource("2_gbr8a")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_owxe8"]
+atlas = ExtResource("2_gbr8a")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7ckno"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s6f87")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uonsa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_owxe8")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
+
+[node name="ShotgunHitbox" type="Area2D" unique_id=2125863087]
+collision_layer = 16
+collision_mask = 5
+script = ExtResource("1_pk7ge")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=382411205]
+polygon = PackedVector2Array(0, 0, 180, 90, 180, -90)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1279695380]
+position = Vector2(130, -17)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_7ckno")
+frame = 2
+frame_progress = 1.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

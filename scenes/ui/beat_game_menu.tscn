@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://brkdvdaevtlpw"]
+
+[ext_resource type="Script" uid="uid://cyjunblsny6ka" path="res://scripts/ui/beat_game_menu.gd" id="1_24esx"]
+
+[node name="BeatGameMenu" type="CanvasLayer" unique_id=592104619]
+script = ExtResource("1_24esx")
+
+[node name="BackgroundOverlay" type="ColorRect" parent="." unique_id=1302458003]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.05, 0.05, 0.1, 0.5)
+
+[node name="Background" type="ColorRect" parent="." unique_id=606187343]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.07, 0.07, 0.1, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="Background" unique_id=430515293]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="LayoutVBox" type="VBoxContainer" parent="Background/CenterContainer" unique_id=1837559279]
+layout_mode = 2
+theme_override_constants/separation = 80
+alignment = 1
+
+[node name="OutcomeLabel" type="Label" parent="Background/CenterContainer/LayoutVBox" unique_id=1139463342]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 64
+text = "You beat the game!
+Congrats!"
+horizontal_alignment = 1
+
+[node name="MainMenuButton" type="Button" parent="Background/CenterContainer/LayoutVBox" unique_id=1907442435]
+custom_minimum_size = Vector2(400, 80)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "Main Menu"
+
+[connection signal="pressed" from="Background/CenterContainer/LayoutVBox/MainMenuButton" to="." method="_on_main_menu_button_pressed"]

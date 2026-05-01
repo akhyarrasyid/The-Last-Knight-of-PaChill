@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://6xyk3fn834nc"
+path="res://.godot/imported/selesai level 1 dan 2 untuk transisi.wav-49969d76f671fbfa9019af38a510db3c.sample"
+
+[deps]
+
+source_file="res://assets/audio/selesai level 1 dan 2 untuk transisi.wav"
+dest_files=["res://.godot/imported/selesai level 1 dan 2 untuk transisi.wav-49969d76f671fbfa9019af38a510db3c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
