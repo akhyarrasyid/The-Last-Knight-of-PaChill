@@ -112,6 +112,15 @@ position = Vector2(531, 89)
 
 [node name="PauseMenu" parent="." unique_id=68227457 instance=ExtResource("10_6xqg0")]
 unique_name_in_owner = true
+visible = false
 
 [node name="HUD" parent="." unique_id=1050869030 instance=ExtResource("12_6w7hk")]
 unique_name_in_owner = true
+
+[node name="ObjectiveWaypoints" type="Node2D" parent="." unique_id=425809271]
+
+[node name="RampToUpperPlatform" type="Node2D" parent="ObjectiveWaypoints" unique_id=1044428732]
+position = Vector2(792, 128)
+
+[node name="UpperPlatformAnchor" type="Node2D" parent="ObjectiveWaypoints" unique_id=133616330]
+position = Vector2(900, -120)
