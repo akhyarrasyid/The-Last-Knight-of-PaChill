@@ -23,17 +23,14 @@ config/icon="res://assets/icon.svg"
 [autoload]
 
 GameState="*res://scripts/game_state.gd"
-MCPScreenshot="*res://addons/godot_mcp/mcp_screenshot_service.gd"
-MCPInputService="*res://addons/godot_mcp/mcp_input_service.gd"
-MCPGameInspector="*res://addons/godot_mcp/mcp_game_inspector_service.gd"
-MCPRuntime="*uid://duj48hyatcodq"
 MusicPlayer="*res://scripts/music_player.gd"
+MCPRuntime="*res://addons/godot_mcp/runtime/mcp_runtime.gd"
 
 [display]
 
 window/size/viewport_width=1600
 window/size/viewport_height=900
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
 window/vsync/vsync_mode=0
 mouse_cursor/custom_image="res://assets/TinySword/mouse_pointer.png"
 mouse_cursor/custom_image_hotspot=Vector2(22, 17)

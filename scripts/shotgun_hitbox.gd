@@ -1,5 +1,9 @@
 extends Area2D
 
+const CombatElevationUtils := preload("res://scripts/combat_elevation.gd")
+
+@export var max_attack_vertical_diff := 32.0
+
 func set_direction(direction: Vector2):
 	rotation = direction.angle()
 
@@ -16,7 +20,8 @@ func disable():
 	$AnimatedSprite2D.hide()
 
 func _on_body_entered(body: Node2D) -> void:
-	if body is Slime:
+	var attacker := get_parent() as Node2D
+	if body is Slime and CombatElevationUtils.can_hit_target(attacker, body, max_attack_vertical_diff):
 		body.hit()
-	if body is FireGoblin:
+	if body is FireGoblin and CombatElevationUtils.can_hit_target(attacker, body, max_attack_vertical_diff):
 		body.hit()

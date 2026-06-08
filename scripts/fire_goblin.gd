@@ -53,7 +53,7 @@ func shoot_fireball(player):
 	var fireball = homing_fire.instantiate()
 	var fireball_spawn = self.global_position + (player.global_position - self.global_position).normalized()*35
 	get_parent().add_child(fireball)
-	fireball.start(fireball_spawn, player)
+	fireball.start(fireball_spawn, player, self)
 
 func _on_attack_animation_finished() -> void:
 	if anim_sprite.animation.begins_with("attack"):

@@ -12,7 +12,7 @@ func _ready() -> void:
 	shotgun_bar.value = 100
 
 func update_time_elapsed(time: float):
-	var minutes = int(time) / 60
+	var minutes = int(time / 60.0)
 	var seconds = int(time) % 60
 	%TimeElapsed.text = "Time: %02d:%02d" % [minutes, seconds]
 	

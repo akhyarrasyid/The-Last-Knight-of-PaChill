@@ -2,8 +2,11 @@ extends CharacterBody2D
 
 class_name Slime
 
+const CombatElevationUtils := preload("res://scripts/combat_elevation.gd")
+
 @export var SPEED = 300.0
 @export var explosion: PackedScene
+@export var max_attack_vertical_diff := 32.0
 
 @onready var slime_animation: AnimatedSprite2D = $AnimatedSprite2D
 
@@ -55,7 +58,7 @@ func _physics_process(delta: float) -> void:
 		if collision:
 			velocity = velocity.bounce(collision.get_normal())
 			var collider = collision.get_collider()
-			if collider is Player and collider.has_method("hit"):
+			if collider is Player and collider.has_method("hit") and CombatElevationUtils.can_hit_target(self, collider, max_attack_vertical_diff):
 				collider.hit(velocity)
 				explode() # Explosion on hit!
 		else:
