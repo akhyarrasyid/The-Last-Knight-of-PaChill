@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bjv74mah1672o" path="res://scripts/ui/hud.gd" id="1_h57g0"]
 [ext_resource type="Texture2D" uid="uid://wm876r17412g" path="res://assets/kenney_fantasy-ui-borders/PNG/Double/Panel/panel-000.png" id="2_hqnrr"]
+[ext_resource type="PackedScene" uid="uid://b8y2xd5e57qui" path="res://scenes/ui/objective_arrow.tscn" id="3_bo48s"]
 
 [node name="HUD" type="CanvasLayer" unique_id=871098079]
 script = ExtResource("1_h57g0")
@@ -122,5 +123,7 @@ text = "SHOTGUN"
 custom_minimum_size = Vector2(220, 8)
 layout_mode = 0
 show_percentage = false
+
+[node name="ObjectiveArrow" parent="." unique_id=1184804129 instance=ExtResource("3_bo48s")]
 
 [connection signal="timeout" from="HudUpdateTimer" to="." method="_on_hud_update_timer_timeout"]

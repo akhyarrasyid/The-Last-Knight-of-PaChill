@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://b8y2xd5e57qui"]
+
+[ext_resource type="Script" uid="uid://v24mjkx8aj4f" path="res://scripts/objective_arrow.gd" id="1_o67rt"]
+[ext_resource type="Texture2D" uid="uid://bietviqvopiar" path="res://assets/generated/objective_arrow.png" id="1_tbpke"]
+
+[node name="ObjectiveArrow" type="Sprite2D" unique_id=1184804129]
+visible = false
+z_index = 20
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("1_tbpke")
+script = ExtResource("1_o67rt")
